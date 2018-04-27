@@ -1,0 +1,17 @@
+<?php
+$sql  = 'SELECT noworodki.data_urodzenia FROM `noworodki` GROUP by noworodki.data_urodzenia,noworodki.id_matki having count(*)>=2';
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) 
+{
+    echo "<table border = \"1\">";
+    while($row = mysqli_fetch_assoc($result)) 
+    {
+        echo'<tr><td>' . $row["data_urodzenia"] . '</td></tr>';
+    }
+     echo "</table>";
+} else {
+    echo "0 results";
+}
+
+?>
